@@ -3,7 +3,7 @@ module Globalize
     module ClassMethods
       delegate :translated_locales, :set_translations_table_name, :to => :translation_class
 
-      if Globalize.rails_42?
+      if Globalize.rails_42? || Globalize.rails_72?
         def columns_hash
           super.except(*translated_attribute_names.map(&:to_s))
         end
